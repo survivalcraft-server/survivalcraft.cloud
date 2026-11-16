@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Survivalcraft Store</title>
+<style>
+:root{--bg:#090611;--panel:#171020;--panel2:#21142c;--line:#493052;--orange:#ff8500;--gold:#ffb52e;--text:#f7f1fb;--muted:#b9aec5;--purple:#bd85ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% 0%,#301a36 0%,#100a18 45%,var(--bg) 100%);color:var(--text);font:15px/1.55 system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(100% - 26px,1050px);margin:auto}
+.hero{padding:22px 0 28px;background:linear-gradient(120deg,#1c1429ee,#100c19ee);border-bottom:1px solid var(--line)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;color:#ffd28c;font-weight:750}.links{display:flex;gap:8px;flex-wrap:wrap}.pill{border:1px solid #805022;background:#281a29;border-radius:30px;padding:7px 12px;font-size:12px}
+.brand{margin-top:20px;border:1px solid #704322;border-radius:22px;background:#130d1ded;padding:22px;box-shadow:0 0 24px #ff850018}.brandline{display:flex;gap:14px;align-items:center}.logo{width:58px;height:58px;display:grid;place-items:center;border-radius:17px;background:#351e29;border:1px solid #99551e;font-size:28px}.brand h1{margin:0;color:var(--gold);font: bold 25px Georgia,serif}.brand p{margin:3px 0 0;color:var(--muted)}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}
+.btn{border:0;border-radius:12px;padding:11px 16px;background:linear-gradient(110deg,#ff7900,#ffb21c);font-weight:850;color:#1c1016;display:inline-flex;justify-content:center;align-items:center;cursor:pointer}.btn.alt{background:#26172e;color:#f7efff;border:1px solid #654274}.btn.small{padding:8px 11px;font-size:13px}
+.navwrap{position:sticky;top:0;z-index:10;padding:10px 0;background:#0d0815ee;backdrop-filter:blur(12px);border-bottom:1px solid #35233f}
+nav{display:flex;gap:7px;overflow-x:auto;padding:2px;scrollbar-width:thin}nav button{flex:1 0 auto;border:1px solid #493052;background:#1a1124;color:#ded3e9;padding:12px 15px;border-radius:13px;font-weight:800;cursor:pointer}nav button.active,nav button:hover{border-color:var(--orange);background:linear-gradient(110deg,#4b251d,#2a1833);color:#ffbd50}
+main{padding:8px 0 35px}.page{display:none;animation:appear .2s ease}.page.active{display:block}@keyframes appear{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:none}}
+section,.panel{margin:17px 0;padding:22px;border:1px solid #422d50;border-radius:20px;background:linear-gradient(145deg,#1b1226,#100b19);box-shadow:0 10px 28px #0003}
+h2{font-size:22px;margin:0 0 12px}h3{font-size:17px;margin:0 0 5px}.muted,small{color:var(--muted)}.muted{margin-top:4px}.hero-title{font-size:clamp(25px,5vw,38px);line-height:1.15;color:#ffd078;margin:0 0 10px}.welcome{padding:28px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.product{border:1px solid #50365d;border-radius:16px;background:#180f23;padding:16px;display:flex;flex-direction:column}.product .price{font-size:20px;font-weight:900;color:#ffb42d;margin:8px 0}.product .btn{width:100%;margin-top:auto}.product p{margin:4px 0 12px;color:var(--muted);font-size:13px}.tag{display:inline-block;border:1px solid #95631c;background:#33220f;color:#ffcf67;border-radius:30px;padding:4px 10px;font-size:12px;font-weight:800}
+.notice{border:1px solid #78451f;background:#2a1a1b;border-radius:14px;padding:14px;color:#f3d4b4;margin:14px 0}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.feature{padding:15px;border:1px solid #47304f;background:#1a1124;border-radius:14px}.feature b{display:block;color:#ffbd50;margin-bottom:4px}
+.account{display:none;margin-top:12px;padding:12px;border:1px solid #68452b;border-radius:14px;background:#211523}.account.show{display:block}.accountrow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+table{width:100%;border-collapse:collapse}td{padding:10px 7px;border-bottom:1px solid #392941}td:last-child{text-align:right;color:#ffbd50;font-weight:800}
+.modal{display:none;position:fixed;inset:0;z-index:30;background:#000b;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modalbox{width:min(100%,430px);padding:22px;border:1px solid #714c80;border-radius:19px;background:#180f22;box-shadow:0 20px 70px #0009}.modalhead{display:flex;justify-content:space-between;align-items:center}.close{background:none;border:0;color:white;font-size:25px;cursor:pointer}.field{width:100%;padding:12px;border-radius:10px;border:1px solid #5b4266;background:#0e0915;color:white;margin:7px 0 13px}.choice{display:flex;gap:12px;margin:7px 0 16px}.choice label{padding:9px 12px;border:1px solid #594064;border-radius:10px}
+.cartitem{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #3d2a46}.paygrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.pay{padding:15px;border:1px solid #50365d;background:#180f23;border-radius:14px}.pay strong{display:block;color:#ffbd50}.footer{text-align:center;color:#8f849a;padding:25px 10px 40px;font-size:13px}
+@media(max-width:680px){.grid,.paygrid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.features{grid-template-columns:1fr}.brand{padding:16px}.brand h1{font-size:21px}section,.panel{padding:17px}.wrap{width:min(100% - 18px,1050px)}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+ <div class="top"><span>🎮 Survivalcraft.cloud</span><div class="links"><a class="pill" href="https://discord.gg/VpcxJSree" target="_blank" rel="noopener">Discord ↗</a><a class="pill" href="https://chat.whatsapp.com/Dl6gRG1KrLdFuTPioEGRsS?s=cl&p=a&iam=2" target="_blank" rel="noopener">Grup WhatsApp ↗</a></div></div>
+ <div class="brand"><div class="brandline"><div class="logo">🛒</div><div><h1>SURVIVALCRAFT STORE</h1><p>Official store untuk rank dan kebutuhan server</p></div></div>
+ <div class="actions"><button class="btn" onclick="showPage('rank')">🛍 Lihat Produk</button><button class="btn alt" onclick="openLogin()">👤 Login Pemain</button></div>
+ <div class="account" id="account"><div class="accountrow"><div>👤 <b id="playerName">Pemain</b> <small id="edition"></small><br><small>Saldo: Rp0 · Gems: 0</small></div><button class="btn alt small" onclick="logout()">Keluar</button></div></div>
+ </div>
+</div></header>
+<div class="navwrap"><div class="wrap"><nav aria-label="Menu utama">
+ <button class="active" data-page="beranda" onclick="showPage('beranda')">⌂ Beranda</button>
+ <button data-page="rank" onclick="showPage('rank')">♛ Rank</button>
+ <button data-page="gems" onclick="showPage('gems')">🪙 Gems</button>
+ <button data-page="leaderboard" onclick="showPage('leaderboard')">🏆 Leaderboard</button>
+ <button data-page="history" onclick="showPage('history')">◴ Order History</button>
+</nav></div></div>
+<main class="wrap">
+ <div class="page active" id="page-beranda">
+  <section class="welcome"><span class="tag">OFFICIAL SERVER STORE</span><h2 class="hero-title">Selamat datang di Survivalcraft Store!</h2><p class="muted">Dukung server Survivalcraft.cloud dengan membeli rank dan Gems. Pilih menu di atas untuk melihat katalog, leaderboard, dan riwayat pesanan.</p><div class="actions"><button class="btn" onclick="showPage('rank')">Lihat Rank</button><button class="btn alt" onclick="showPage('gems')">Lihat Gems</button></div>
+  <div class="features"><div class="feature"><b>♛ Rank</b><small>Pilih rank sesuai kebutuhanmu.</small></div><div class="feature"><b>🪙 Gems</b><small>Paket Gems instant dan weekly pass.</small></div><div class="feature"><b>🛡️ Pembayaran</b><small>Transfer lalu kirim bukti ke admin.</small></div></div></section>
+  <section><h2>⚠️ Peringatan Pembelian</h2><p class="muted">Pastikan username Minecraft benar. Lakukan pembayaran hanya ke rekening resmi yang tercantum pada menu Pembayaran dan selalu simpan bukti transfer.</p><button class="btn alt" onclick="showPage('history')">Lihat Order History</button></section>
+ </div>
+ <div class="page" id="page-rank"><section><h2>♛ Pilihan Rank</h2><p class="muted">Pilih rank yang ingin kamu pesan. Harga sesuai katalog Survivalcraft.cloud.</p><div class="cards" id="rankCards"></div></section></div>
+ <div class="page" id="page-gems">
+  <section><h2>🪙 Gems Weekly Pass</h2><p class="muted">Bonus hari pertama langsung masuk, lalu klaim harian di lobby selama 6 hari berikutnya.</p><div class="cards" id="weeklyCards"></div></section>
+  <section><h2>💎 Instant Gems</h2><p class="muted">Paket Gems sekali kirim.</p><div class="cards" id="instantCards"></div></section>
+ </div>
+ <div class="page" id="page-leaderboard"><section class="center"><h2>🏆 Leaderboard Donator</h2><div style="font-size:58px">🏆</div><h3>Belum tersedia</h3><p class="muted">Data leaderboard akan ditampilkan setelah terhubung ke sistem database server.</p><span class="tag">TOP DONATOR BULAN INI</span></section></div>
+ <div class="page" id="page-history"><section><h2>◴ Order History</h2><p class="muted">Riwayat pesanan pada website demo ini belum tersimpan ke database. Simpan bukti chat dan pembayaran untuk pengecekan admin.</p><div id="historyList" class="notice">Belum ada pesanan di sesi ini.</div></section></div>
+ <div class="page" id="page-payment"><section><h2>💳 Pembayaran</h2><p class="muted">Silakan transfer sesuai total pesanan. Setelah transfer, chat admin dan kirim screenshot bukti pembayaran.</p><div class="paygrid">
+ <div class="pay"><strong>DANA</strong>Nama: Ilh*** pra****<br>Nomor: 082344116582<button class="btn alt small" onclick="copyText('082344116582')">Salin nomor</button></div>
+ <div class="pay"><strong>GoPay</strong>Nama: Ngatini<br>Nomor: 0895375777262<button class="btn alt small" onclick="copyText('0895375777262')">Salin nomor</button></div>
+ <div class="pay"><strong>Bank Mandiri</strong>Nama: ILH*** PR*****<br>Rekening: 1730022311154<button class="btn alt small" onclick="copyText('1730022311154')">Salin rekening</button></div></div>
+ <div class="notice">⚠️ Jangan lupa kirim screenshot bukti transfer ke WhatsApp admin setelah pembayaran berhasil.</div><a class="btn" href="https://wa.me/62895375777262?text=Halo%20Admin%20Survivalcraft%2C%20saya%20sudah%20transfer.%20Berikut%20bukti%20pembayaran%20saya." target="_blank" rel="noopener">Chat Admin & Kirim Bukti</a></section></div>
+</main>
+<footer class="footer">© 2026 Survivalcraft.cloud Store · Website komunitas</footer>
+<div class="modal" id="loginModal"><div class="modalbox"><div class="modalhead"><h2>Login Pemain</h2><button class="close" onclick="closeLogin()">×</button></div><p class="muted">Masukkan username Minecraft kamu. Website ini tidak meminta password Minecraft.</p><label for="username">Username Minecraft</label><input class="field" id="username" placeholder="Contoh: Steve" maxlength="24"><div><b>Edisi Minecraft</b></div><div class="choice"><label><input type="radio" name="edition" value="Java" checked> Java</label><label><input type="radio" name="edition" value="Bedrock"> Bedrock</label></div><button class="btn" style="width:100%" onclick="login()">Lanjutkan</button><small>Dengan melanjutkan, kamu menyetujui penggunaan username untuk identifikasi pesanan.</small></div></div>
+<script>
+const ranks=[["Loyal","Rp5.000"],["Supporter","Rp15.000"],["Pro","Rp25.000"],["Platinum","Rp36.000"],["Elite","Rp45.000"],["Legend","Rp60.000"],["Lord","Rp75.000"],["Glory","Rp90.000"],["Mirlace","Rp180.000"],["Mythic","Rp230.000"]];
+const weekly=[["100K Gems","Rp55.000","Hari 1: +40.000 Gems instan, lalu 6 hari klaim +10.000 Gems/hari di lobby."],["200K Gems","Rp110.000","Hari 1: +80.000 Gems instan, lalu 6 hari klaim +20.000 Gems/hari di lobby."],["300K Gems","Rp200.000","Hari 1: +120.000 Gems instan, lalu 6 hari klaim +30.000 Gems/hari di lobby."],["500K Gems","Rp275.000","Hari 1: +200.000 Gems instan, lalu 6 hari klaim +50.000 Gems/hari di lobby."]];
+const instant=[["1K Gems","Rp1.000"],["10K Gems","Rp10.000"],["50K Gems","Rp50.000"],["150K Gems","Rp149.500"],["350K Gems","Rp349.500"],["500K Gems","Rp495.000"],["1JT Gems","Rp989.000"],["1,5JT Gems","Rp1.469.000"],["2JT Gems","Rp1.969.000"]];
+let cart=[];
+function renderCards(id,data,type){document.getElementById(id).innerHTML=data.map((p,i)=>`<article class="product"><h3>${type==='rank'?'♛':'💎'} ${p[0]}</h3><div class="price">${p[1]}</div>${p[2]?`<p>${p[2]}</p>`:'<p>Benefit dan proses pemberian dikonfirmasi admin.</p>'}<button class="btn order" onclick="addCart('${type}',${i})">Pesan ${type==='rank'?'Rank':'Gems'}</button></article>`).join('')}
+renderCards('rankCards',ranks,'rank');renderCards('weeklyCards',weekly,'weekly');renderCards('instantCards',instant,'instant');
+function showPage(name){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));const page=document.getElementById('page-'+name);if(page)page.classList.add('active');document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));window.scrollTo({top:0,behavior:'smooth'})}
+function addCart(type,i){let p=type==='rank'?ranks[i]:type==='weekly'?weekly[i]:instant[i];let label=type==='rank'?'Rank':type==='weekly'?'Weekly Pass':'Instant Gems';let username=localStorage.getItem('sc_user')||'';let edition=localStorage.getItem('sc_edition')||'';let message=`Halo Admin Survivalcraft! Saya ingin memesan ${label}: ${p[0]} (${p[1]}). Username: ${username||'(belum diisi)'}. Edisi: ${edition||'(belum dipilih)'}.`;cart.push({name:p[0],price:p[1],message});document.getElementById('historyList').innerHTML=`Pesanan sesi ini: ${cart.map(x=>`<div class="cartitem"><span>${x.name}</span><b>${x.price}</b></div>`).join('')}<p><small>Riwayat ini hanya tersimpan selama halaman/sesi browser aktif.</small></p>`;let text=encodeURIComponent(message);window.open('https://wa.me/62895375777262?text='+text,'_blank');}
+function openLogin(){document.getElementById('loginModal').classList.add('show')}
+function closeLogin(){document.getElementById('loginModal').classList.remove('show')}
+function login(){let u=document.getElementById('username').value.trim();if(!u){alert('Masukkan username Minecraft dulu.');return}let e=document.querySelector('input[name="edition"]:checked').value;localStorage.setItem('sc_user',u);localStorage.setItem('sc_edition',e);updateAccount();closeLogin()}
+function updateAccount(){let u=localStorage.getItem('sc_user');if(u){document.getElementById('account').classList.add('show');document.getElementById('playerName').textContent=u;document.getElementById('edition').textContent='('+localStorage.getItem('sc_edition')+')'}}
+function logout(){localStorage.removeItem('sc_user');localStorage.removeItem('sc_edition');document.getElementById('account').classList.remove('show')}
+function copyText(t){if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>alert('Berhasil disalin: '+t)).catch(()=>prompt('Salin nomor ini:',t))}else prompt('Salin nomor ini:',t)}
+updateAccount();
+</script>
+</body></html>
